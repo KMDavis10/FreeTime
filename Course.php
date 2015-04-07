@@ -6,13 +6,10 @@ class Course
 	private $isMajor;
 	private $professor;
 	
-	public function Course ($eStudentCourse, $eCourseLevel, $eIsMajor) {
+	public function Course ($eStudentCourse, $eCourseLevel, $eIsMajor, $eProfessor) {
 		$this->studentCourse = $eStudentCourse;
 		$this->courseLevel = $eCourseLevel;
 		$this->isMajor = $eIsMajor;
-	}
-	
-	public function setProfessor($eProfessor) {
 		$this->professor = $eProfessor;
 	}
 	
@@ -20,7 +17,8 @@ class Course
 		$x1 = $this->courseCalculator();
 		$x2 = $this->levelCalculator();
 		$x3 = $this->majorCalculator();
-		$x4 = $this->professor->difficulty_Prof();
+		$a = $this->professor;
+		$x4 = $a->difficulty_Prof();
 		$x5 = $x1 + $x2 + $x3 + $x4;
 		return $x5;
 	}

@@ -1,47 +1,33 @@
+
 <?php
 
 function __autoload($class_name) {
     include $class_name . '.php';
 }
 
-public class FileReader {
+$reader = new FileReader();
+$professor1 = $reader->getProfessor($_POST['professor1']);
+$professor2 = $reader->getProfessor($_POST['professor2']);
+$professor3 = $reader->getProfessor($_POST['professor3']);
+$professor4 = $reader->getProfessor($_POST['professor4']);
+$course1 = new Course($_POST['course1'], $_POST['level1'], $_POST['requirement1'], $professor1);
+echo $course1->getCourseDifficulty() . "\n";
+$course2 = new Course($_POST['course2'], $_POST['level2'], $_POST['requirement2'], $professor2);
+echo $course2->getCourseDifficulty() . "\n";
+$course3 = new Course($_POST['course3'], $_POST['level3'], $_POST['requirement3'], $professor3);
+echo $course3->getCourseDifficulty() . "\n";
+$course4 = new Course($_POST['course4'], $_POST['level4'], $_POST['requirement4'], $professor4);
+echo $course4->getCourseDifficulty() . "\n";
 
-/** Getting the professors file */
-$file = file_get_contents('./professors.txt', FILE_USE_INCLUDE_PATH);
-/** Each item (delimited by ",") is added to a seperate element in the $file array */
-$file = explode(",", $file);
-$counter = count($file);
-$freeTime = 0;
-/** count for keeping track of where we are in $ListOfProfessors */
-$count = 0;
-/** Array that contains all the professor objects */
-$ListOfProfessors = array();
+$courses = array($course1, $course2, $course3, $course4);
+$professors = array($professor1, $professor2, $professor3, $professor4);
 
-for ($i = 0; $i < $counter; $i = $i+4) {
-	$ListOfProfessors[$count] = new Professor();
-	$ListOfProfessors[$count]->setProfName($file[$i]);
-	$ListOfProfessors[$count]->setProfHelp($file[$i+1]);
-	$ListOfProfessors[$count]->setProfClarity($file[$i+2]);
-	$ListOfProfessors[$count]->setProfEasy($file[$i+3]);
-	$count++;
-}
+$user = new User($courses, $professors);
 
-
-for ($i = 0; $i < count($ListOfProfessors); $i++) {
-	$var = $ListOfProfessors[$i]->difficulty_Prof();
-	$freeTime = $var + $freeTime;
-}
-
-$course = new Course($_POST['course'], $_POST['level'], $_POST['requirement']);
-$objects = $ListOfProfessors;
-for ($i = 0; $i < count($objects); $i++) {
-	if (strpos($objects[$i]->getProfName(), $_POST['professors']) !== false) {
-		$course->setProfessor($objects[$i]);
-	}
-}
-
-echo $course->getCourseDifficulty();
-}
+$totalCourseDifficulty = $user->getAllCourseDifficulty();
+echo $totalCourseDifficulty . "\n";
+$difficultyToHours = $totalCourseDifficulty/5;
+echo $difficultyToHours . "\n";
 
 ?>
 
