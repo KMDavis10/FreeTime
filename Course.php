@@ -70,5 +70,14 @@ class Course
 		return $majorDifficulty;
 	}
 	
+	public function __toString ()
+	{
+		$courseName = $this->studentCourse;
+		$courseLevel = $this->courseLevel;
+		$courseDifficulty = $this->getCourseDifficulty();
+		return $courseName . $courseLevel . " has a difficulty ranking of: " . $courseDifficulty . "\n";
+	}
+	
+	
 }
 ?>

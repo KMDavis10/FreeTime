@@ -1,10 +1,12 @@
 <html>
 <body>
+
 <?php
 function __autoload($class_name) {
     include $class_name . '.php';
 }
 ?>
+
 <form action="welcome.php" method="post">
 What is the name of your first professor?:<input type="text" name="professor1"><br>
 What is the name of your first course?:<input type="text" name="course1"><br>
