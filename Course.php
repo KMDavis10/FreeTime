@@ -75,7 +75,7 @@ class Course
 		$courseName = $this->studentCourse;
 		$courseLevel = $this->courseLevel;
 		$courseDifficulty = $this->getCourseDifficulty();
-		return $courseName . $courseLevel . " has a difficulty ranking of: " . $courseDifficulty . "\n";
+		return "<br />" . $courseName . $courseLevel . " has a difficulty ranking of: " . $courseDifficulty . "\n";
 	}
 	
 	

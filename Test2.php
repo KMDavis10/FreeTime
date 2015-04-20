@@ -12,19 +12,62 @@ What is the name of your first professor?:<input type="text" name="professor1"><
 What is the name of your first course?:<input type="text" name="course1"><br>
 What is the level of your first course?:<input type="text" name="level1"><br>
 Is the first course a major requirement?:<input type="text" name="requirement1"><br>
+<br/>
 What is the name of your second professor?:<input type="text" name="professor2"><br>
 What is the name of your second course?:<input type="text" name="course2"><br>
 What is the level of your second course?:<input type="text" name="level2"><br>
 Is the second course a major requirement?:<input type="text" name="requirement2"><br>
+<br/>
 What is the name of your third professor?:<input type="text" name="professor3"><br>
 What is the name of your third course?:<input type="text" name="course3"><br>
 What is the level of your third course?:<input type="text" name="level3"><br>
 Is the third course a major requirement?:<input type="text" name="requirement3"><br>
+<br/>
 What is the name of your fourth professor?:<input type="text" name="professor4"><br>
 What is the name of your fourth course?:<input type="text" name="course4"><br>
-What is the level of your fourth course?:<input type="text" name="level4"><br>
+What is the level of your fourth course?:<input type="text" name="level4"><br>		
 Is the fourth course a major requirement?:<input type="text" name="requirement4"><br>
+<br/>
+Do you play sports?:<input type = "button" name = "yes1" value = "yes" onClick = "show1();">
+<input type = "button" name = "no1" value = "no" onClick = "hidden1();"><br>
+<input type="text" name="sportsHours" id="t1" placeholder="Enter total hours"><br>
+<br/>
+Do you have a job?:<input type = "button" name = "yes2" value = "yes" onClick = "show2();">
+<input type = "button" name = "no2" value = "no" onClick = "hidden2();"><br>
+<input type="text" name="jobHours" id="t2" placeholder="Enter total hours"><br>
+<br/>
+Do you have clubs?:<input type = "button" name = "yes3" value = "yes" onClick = "show3();">
+<input type = "button" name = "no3" value = "no" onClick = "hidden3();"><br>
+<input type="text" name="clubHours" id="t3" placeholder="Enter total hours"><br>
+
 <input type="submit">
 </form>
-</html>
+<script type= "text/javascript">
+function hidden1() {
+	document.getElementById("t1").style.visibility='hidden';
+}
+function show1() {
+	document.getElementById("t1").style.visibility='visible';
+}
+
+function hidden2() {
+	document.getElementById("t2").style.visibility='hidden';
+}
+function show2() {
+	document.getElementById("t2").style.visibility='visible';
+}
+
+function hidden3() {
+	document.getElementById("t3").style.visibility='hidden';
+}
+function show3() {
+	document.getElementById("t").style.visibility='visible';
+}
+
+
+
+</script>
+
 </body>
+</html>
+

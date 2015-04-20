@@ -1,8 +1,13 @@
 <?php
+/** Retrieves professor information from file, creates Professor objects, places objects into Professor array.
+  * Returns the correct professor object upon entry of a professor's name 
+  */
 class FileReader {
-
+	
 	private $ListOfProfessors;
 	
+	/** FileReader - the constructor. Moves professor information from file to array, which is then delimited and placed
+	  * into $ListOfProfessors */
 	public function FileReader() {
 
 		/** Getting the professors file */
@@ -15,7 +20,9 @@ class FileReader {
 		$count = 0;
 		/** Array that contains all the professor objects */
 		$this->ListOfProfessors = array();
-
+		/** Because there are 4 parameters in the text file (professor name, helpfulness, clarity and easiness),
+		  * the loop increments by 4 until it is finished
+		  */
 		for ($i = 0; $i < $counter; $i = $i+4) {
 			$this->ListOfProfessors[$count] = new Professor();
 			$this->ListOfProfessors[$count]->setProfName($file[$i]);
@@ -25,7 +32,12 @@ class FileReader {
 			$count++;
 		}
 	}
-		
+	
+	/** getProfessor - takes in a string name and returns the professor object associated with it
+	  *
+	  * @param $eProfName
+	  * @return $returnProf
+	  */	
 	public function getProfessor($eProfName) {
 		$returnProf;
 		$objects = $this->ListOfProfessors;
