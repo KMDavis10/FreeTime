@@ -22,30 +22,53 @@ foreach($_POST as $k => $v) {
 	/** For each name that the user entered in Test2, we check to see if that professor exists in our Professor objects
 	  * if it does, then we get that Professor object and add it to the professor array 
 	  */
-	if(strpos($k, 'professor') === 0) {
-		$professors[$count1] = $reader->getProfessor($v);
+	if (strpos($k, 'professor') === 0 && empty($v)) {
+		$professors[$count1] = $reader->getProfessor("unknown");
 		$count1++;
+	}
+	else {
+		if(strpos($k, 'professor') === 0) {
+			$professors[$count1] = $reader->getProfessor($v);
+			$count1++;
+		}
 	}
 }
 /** Retrieves user-entered information from Test2 and populates courseNames array */
 foreach($_POST as $k => $v) {
-	/** For each course name that the user entered in Test 2, we check to see if that course exists in our database
-	  * if it does, then we add it to courseNames */
-	if(strpos($k, 'course') === 0) {
-		$courseNames[$count2] = $v;
-		$count2++;
+/** For each course name that the user entered in Test 2, we check to see if that course exists in our database
+  * if it does, then we add it to courseNames */
+	if(strpos($k, 'course') === 0 && empty($v)) {
+			$courseNames[$count2] = "UNK";
+			$count2++;
 	}
+		/** If it is not set (the user did not define a course name), we say it is an unknown course, with 0 difficulty */
+	else {
+		if (strpos($k, 'course') === 0) {
+			$courseNames[$count2] = $v;
+			$count2++;
+		}
+	}	
 }
 foreach($_POST as $k => $v) {
 	if(strpos($k, 'level') === 0) {
-		$courseLevels[$count3] = $v;
-		$count3++;
+		if (isset($k)){
+			$courseLevels[$count3] = $v;
+			$count3++;
+		}
+		else {
+			$courseLevels[$count3] = 0;
+		}
 	}
 }
 foreach($_POST as $k => $v) {
 	if(strpos($k, 'requirement') === 0) {
-		$majorRequirements[$count4] = $v;
-		$count4++;
+		if (isset($k)){
+			$majorRequirements[$count4] = $v;
+			$count4++;
+		}
+		else {
+			$majorRequirements[$count4] = 0;
+		}
 	}
 }
 /** Creates each course with information from arrays */
