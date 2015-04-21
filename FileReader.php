@@ -5,6 +5,7 @@
 class FileReader {
 	
 	private $ListOfProfessors;
+	private $professorFound;
 	
 	/** FileReader - the constructor. Moves professor information from file to array, which is then delimited and placed
 	  * into $ListOfProfessors */
@@ -40,14 +41,28 @@ class FileReader {
 	  */	
 	public function getProfessor($eProfName) {
 		$returnProf;
+		$this->professorFound = false;
 		$objects = $this->ListOfProfessors;
 		for ($i = 0; $i < count($objects); $i++) {
 			if (strpos($objects[$i]->getProfName(), $eProfName) !== false) {
+				$this->professorFound = true;
 				$returnProf = $objects[$i];
+			}
+		}
+		if ($this->professorFound != true) {
+			for ($i = 0; $i < count($objects); $i++) {
+				if (strpos($objects[$i]->getProfName(), "unknown") !== false) {
+					$returnProf = $objects[$i];
+				}
 			}
 		}
 		return $returnProf;
 	}
+	
+	public function getProfessorFound() {
+		return $this->professorFound;
+	}
+	
 }
 
 ?>

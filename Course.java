@@ -1,3 +1,12 @@
+// Name: Kyle Davis
+// Course: CSC 415
+// Semester: Spring 2015
+// Instructor: Dr. Pulimood 
+// Project name: Free Time Calculator
+// Description: An application designed to calculate how much free time a student has 
+// Filename: Course.php
+// Description: This class is an entity class that stores information about a particular course that a user has
+// Last modified on: 4/21/15
 
 import java.util.*;
 
