@@ -2,6 +2,17 @@
 <body>
 
 <?php
+
+// Name: Kyle Davis
+// Course: CSC 415
+// Semester: Spring 2015
+// Instructor: Dr. Pulimood 
+// Project name: Free Time Calculator
+// Description: An application designed to calculate how much free time a student has 
+// Filename: Test2.php
+// Description: Retrieves information from user in form data and sends to "welcome.php" 
+// Last modified on: 4/21/15
+
 function __autoload($class_name) {
     include $class_name . '.php';
 }

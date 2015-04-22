@@ -1,10 +1,19 @@
 <?php
-/** Retrieves professor information from file, creates Professor objects, places objects into Professor array.
-  * Returns the correct professor object upon entry of a professor's name 
-  */
+// Name: Kyle Davis
+// Course: CSC 415
+// Semester: Spring 2015
+// Instructor: Dr. Pulimood 
+// Project name: Free Time Calculator
+// Description: An application designed to calculate how much free time a student has 
+// Filename: FileReader.php
+// Description: Retrieves professor information from file, creates Professor objects, places objects into Professor array.
+// 				Returns the correct professor object upon entry of a professor's name 
+// Last modified on: 4/21/15
+
 class FileReader {
-	
+	/** Array of professor objects - made up from all professors in the text file */
 	private $ListOfProfessors;
+	/** */
 	private $professorFound;
 	
 	/** FileReader - the constructor. Moves professor information from file to array, which is then delimited and placed
@@ -43,12 +52,19 @@ class FileReader {
 		$returnProf;
 		$this->professorFound = false;
 		$objects = $this->ListOfProfessors;
+		/** Goes through list of professors and searches for the name entered as parameters */
 		for ($i = 0; $i < count($objects); $i++) {
+			/** If we were able to find a professor whose name matches the one in the parameter, we set "professorFound"
+			  * to true and set returnProf to the object we matched 
+			  */
 			if (strpos($objects[$i]->getProfName(), $eProfName) !== false) {
 				$this->professorFound = true;
 				$returnProf = $objects[$i];
 			}
 		}
+		/** If we were not able to find the correct professor after looking through our list, we set the professor object
+		  * to the unknown object and return that.
+		  */
 		if ($this->professorFound != true) {
 			for ($i = 0; $i < count($objects); $i++) {
 				if (strpos($objects[$i]->getProfName(), "unknown") !== false) {
@@ -59,6 +75,7 @@ class FileReader {
 		return $returnProf;
 	}
 	
+	/** Function for checking if the right professor was found in order to print a correct message to the user */
 	public function getProfessorFound() {
 		return $this->professorFound;
 	}
