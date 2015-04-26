@@ -19,7 +19,6 @@ class FileReader {
 	/** FileReader - the constructor. Moves professor information from file to array, which is then delimited and placed
 	  * into $ListOfProfessors */
 	public function FileReader() {
-
 		/** Getting the professors file */
 		$file = file_get_contents('./professors.txt', FILE_USE_INCLUDE_PATH);
 		/** Each item (delimited by ",") is added to a seperate element in the $file array */
@@ -33,13 +32,25 @@ class FileReader {
 		/** Because there are 4 parameters in the text file (professor name, helpfulness, clarity and easiness),
 		  * the loop increments by 4 until it is finished
 		  */
-		for ($i = 0; $i < $counter; $i = $i+4) {
-			$this->ListOfProfessors[$count] = new Professor();
-			$this->ListOfProfessors[$count]->setProfName($file[$i]);
-			$this->ListOfProfessors[$count]->setProfHelp($file[$i+1]);
-			$this->ListOfProfessors[$count]->setProfClarity($file[$i+2]);
-			$this->ListOfProfessors[$count]->setProfEasy($file[$i+3]);
-			$count++;
+		if (strpos($file[$counter-1], ",") === true) {
+			for ($i = 0; $i < $counter; $i = $i+4) {
+				$this->ListOfProfessors[$count] = new Professor();
+				$this->ListOfProfessors[$count]->setProfName($file[$i]);
+				$this->ListOfProfessors[$count]->setProfHelp($file[$i+1]);
+				$this->ListOfProfessors[$count]->setProfClarity($file[$i+2]);
+				$this->ListOfProfessors[$count]->setProfEasy($file[$i+3]);
+				$count++;
+			}
+		}
+		else {
+			for ($i = 0; $i < $counter-1; $i = $i+4) {
+				$this->ListOfProfessors[$count] = new Professor();
+				$this->ListOfProfessors[$count]->setProfName($file[$i]);
+				$this->ListOfProfessors[$count]->setProfHelp($file[$i+1]);
+				$this->ListOfProfessors[$count]->setProfClarity($file[$i+2]);
+				$this->ListOfProfessors[$count]->setProfEasy($file[$i+3]);
+				$count++;
+			}
 		}
 	}
 	

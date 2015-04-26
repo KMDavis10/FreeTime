@@ -39,6 +39,15 @@ class Course
 		return $x5;
 	}
 	
+	public function getCourseName() {
+		return $this->studentCourse;
+	}
+	
+	public function getCourseLevel() {
+		return $this->courseLevel;
+	}
+	
+	
 	/** Gets course name difficulty from text file - each course prefix is assigned a difficulty level in the file
 	  * which is parsed and added to the calculations
 	  * @return the difficulty associated with the course 

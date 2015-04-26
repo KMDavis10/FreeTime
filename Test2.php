@@ -17,7 +17,11 @@ function __autoload($class_name) {
     include $class_name . '.php';
 }
 ?>
-
+<body background="background.png">
+<link rel="stylesheet" href="style.css">
+<div id="header">
+<h1>Free Time Calculator</h1>
+</div>
 <form action="welcome.php" method="post">
 What is the name of your first professor?:<input type="text" name="professor1"><br>
 What is the name of your first course?:<input type="text" name="course1"><br>
@@ -50,8 +54,9 @@ Do you have a job?:<input type = "button" name = "yes2" value = "yes" onClick = 
 Do you have clubs?:<input type = "button" name = "yes3" value = "yes" onClick = "show3();">
 <input type = "button" name = "no3" value = "no" onClick = "hidden3();"><br>
 <input type="text" name="clubHours" id="t3" placeholder="Enter total hours"><br>
-
-<input type="submit">
+<div class="button">
+<button type="submit">Calculate total hours</button>
+</div>
 </form>
 <script type= "text/javascript">
 function hidden1() {
@@ -72,12 +77,14 @@ function hidden3() {
 	document.getElementById("t3").style.visibility='hidden';
 }
 function show3() {
-	document.getElementById("t").style.visibility='visible';
+	document.getElementById("t3").style.visibility='visible';
 }
 
 
 
 </script>
+
+
 
 </body>
 </html>

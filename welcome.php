@@ -40,6 +40,7 @@ foreach($_POST as $k => $v) {
 	  */
 	if (strpos($k, 'professor') === 0 && empty($v)) {
 		$professors[$count1] = $reader->getProfessor("unknown");
+		$professorsExist[$count1] = false;
 		$count1++;
 	}
 	else {
@@ -99,11 +100,20 @@ foreach($_POST as $k => $v) {
 /** Creates each course with information from arrays */
 for ($i = 0; $i < $count1; $i++) {
 	$courses[$i] = new Course($courseNames[$i], $courseLevels[$i], $majorRequirements[$i], $professors[$i]);
-	if ($professorsExist[$i] == true) {
-		echo $courses[$i];
+	if ($professorsExist[$i] !=  null && $professors[$i] == true) {
+		echo '<div id = "courses">';
+		echo $courses[$i]; 
+		echo '</div>';
 	}
 	else {
-		echo "Professor did not exist in database - calculated without professor information" . $courses[$i];
+		echo '<div align="center">';
+		echo '<font color="red">Error! </font>';
+		echo " Professor did not exist in database - calculated " . $courses[$i]->getCourseName() . $courses[$i]->getCourseLevel() . " without professor information";
+		echo '</div>';
+		echo '<div id = "courses">';
+		echo $courses[$i]; 
+		echo '</div>';
+		
 	}
 }
 /** Defines a User and passes them the courses */
@@ -127,13 +137,35 @@ if (!empty($clubs)) {
 $difficultyToHours = $totalCourseDifficulty/5;
 $difficultyToHours += $other;
 /** Displays time needed per week */
-echo nl2br("<br />" . "Total hours a week needed: " . $difficultyToHours);
+//echo nl2br("<br />" . "Total hours a week needed: " . $difficultyToHours);
 /** 100 comes from 168 (total hours in a week) - 56 (hours spent sleeping a week 8*7) - 12 (hours spent in class a week) */
 $freeTime = 100 - $difficultyToHours;
 /** Displays free time that student has a week, or average free time per day */
-echo nl2br("<br />" . "Total free hours a week: " . $freeTime . ", or approximately " . $freeTime/7 . " hours a day");
+//echo nl2br("<br />" . "Total free hours a week: " . $freeTime . ", or approximately " . $freeTime/7 . " hours a day");
 
 ?>
+
+
+<body background="background.png">
+<link rel="stylesheet" href="style2.css">
+<div id = "freeTime">
+<br>
+Total Free Hours a Week: <?php echo round($freeTime, 0)?>
+</div>
+<div id = "freeTime2">
+<?php echo "(or approximately " . round($freeTime/7, 2) . " hours a day)" ?>
+</div>
+
+<form action="Test2.php" method="post">
+<div class = "button">
+<button type="submit">Try again? </button>
+</div>
+</form>
+<form action="NewProfessor.html" method="post">
+<div class = "button">
+<button type="submit">Add a new professor? </button>
+</div>
+</form>
 
 </body>
 </html>

@@ -17,4 +17,6 @@ Dimitric Paramichail, 3.0, 2.0, 3.0,
 Ralph Edelbach, 2.0, 2.0, 1.9, 
 Joe Flynn, 2.9, 3.0, 5.0,
 Bijan Sepahpour, 4.8, 4.5, 2.5,
-unknown, 5, 5, 5
+unknown, 5, 5, 5,
+
+Matthew DiMatteo, 5, 5, 5, 

@@ -1,0 +1,41 @@
+#header {
+	text-align: center;
+  	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 24px;
+	line-height: 30px;
+	text-transform: uppercase;
+	text-shadow: 0 2px white, 0 3px #777;
+}
+form {
+  position: relative;
+  font:  .9em sans-serif;	
+  width  : 30%;
+  height : 498px;
+  margin : 40 auto;
+  text-align: right;
+
+}
+button {
+  position     : absolute;
+  left         : 300px;
+  top          : 560px;
+
+  padding      : 5px;
+
+  font         : bold .9em sans-serif;
+  border       : 2px solid #333;
+  border-radius: 5px;
+  background   : #BDBDBD;
+
+  cursor       : pointer;
+
+-webkit-transform: rotate(-.05deg);
+   -moz-transform: rotate(-.05deg);
+    -ms-transform: rotate(-.05deg);
+     -o-transform: rotate(-.05deg);
+        transform: rotate(-.05deg);
+}
+

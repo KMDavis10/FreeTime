@@ -1,0 +1,71 @@
+
+form {
+  position: relative;
+  font:  .9em sans-serif;	
+  width  : 30%;
+  margin : 20 auto;
+  text-align: right;
+
+}
+
+#freeTime {	
+  margin : 15;
+  text-align: center;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 22px;
+	line-height: 10px;
+	text-transform: uppercase;
+}
+
+
+#freeTime2 {	
+  text-align: center;
+	color: #848484;
+	font-weight: center;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+
+#courses {	
+  margin : 5;
+  text-align: center;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 20px;
+	line-height: 10px;
+	text-transform: uppercase;
+}
+
+	
+button {
+  text-align: center;
+  font         : bold .9em sans-serif;
+  border       : 2px solid #333;
+  border-radius: 5px;
+  background   : #BDBDBD;
+  cursor       : pointer;
+-webkit-transform: rotate(-.05deg);
+   -moz-transform: rotate(-.05deg);
+    -ms-transform: rotate(-.05deg);
+     -o-transform: rotate(-.05deg);
+        transform: rotate(-.05deg);
+}
+
+#header2 {
+	text-align: center;
+  	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 18px;
+	line-height: 10px;
+	text-transform: uppercase;
+	text-shadow: 0 2px white, 0 3px #777;
+}
+
+
