@@ -101,11 +101,23 @@ foreach($_POST as $k => $v) {
 for ($i = 0; $i < $count1; $i++) {
 	$courses[$i] = new Course($courseNames[$i], $courseLevels[$i], $majorRequirements[$i], $professors[$i]);
 	if ($professorsExist[$i] !=  null && $professors[$i] == true) {
+		if (strpos($courseNames[$i], "UNK") !== false) {
+			echo '<div align="center">';
+			echo '<font color="red">Error! </font>';
+			echo " Course does not exist in database - calculated " . $courses[$i]->getCourseName() . " as an unknown class with no additional information";
+			echo '</div>';	
+		}
 		echo '<div id = "courses">';
 		echo $courses[$i]; 
 		echo '</div>';
 	}
 	else {
+		if (strpos($courses[$i]->getCourseName(), "UNK") !== false) {
+			echo '<div align="center">';
+			echo '<font color="red">Error! </font>';
+			echo " Course does not exist in database - calculated " . $courses[$i]->getCourseName() . " as an unknown class with no additional calculations";
+			echo '</div>';	
+		}
 		echo '<div align="center">';
 		echo '<font color="red">Error! </font>';
 		echo " Professor did not exist in database - calculated " . $courses[$i]->getCourseName() . $courses[$i]->getCourseLevel() . " without professor information";

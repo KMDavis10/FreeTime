@@ -18,7 +18,7 @@
 <body background="background.png">
 <link rel="stylesheet" href="style2.css"> 
 <div id = "freeTime2">
-<?php echo '$prof' ?> added successfully
+<?php echo "$prof" ?> added successfully
 </div>
 <form action="Test2.php" method="post">
 <div class = "button">
