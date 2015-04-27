@@ -8,7 +8,7 @@
 // Filename: FileReader.php
 // Description: Retrieves professor information from file, creates Professor objects, places objects into Professor array.
 // 				Returns the correct professor object upon entry of a professor's name 
-// Last modified on: 4/21/15
+// Last modified on: 4/27/15
 
 class FileReader {
 	/** Array of professor objects - made up from all professors in the text file */
@@ -33,6 +33,7 @@ class FileReader {
 		  * the loop increments by 4 until it is finished
 		  */
 		if (strpos($file[$counter-1], ",") === true) {
+			/** If the last position of the file has a hanging comma, we adjust how the array reads in the data */
 			for ($i = 0; $i < $counter; $i = $i+4) {
 				$this->ListOfProfessors[$count] = new Professor();
 				$this->ListOfProfessors[$count]->setProfName($file[$i]);

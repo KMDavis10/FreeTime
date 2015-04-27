@@ -80,12 +80,7 @@ function show3() {
 	document.getElementById("t3").style.visibility='visible';
 }
 
-
-
 </script>
-
-
-
 </body>
 </html>
 

@@ -7,7 +7,7 @@
 // Description: An application designed to calculate how much free time a student has 
 // Filename: Course.php
 // Description: Entity class designed to hold information about a course 
-// Last modified on: 4/21/15
+// Last modified on: 4/27/15
 
 class Course
 {
@@ -39,10 +39,18 @@ class Course
 		return $x5;
 	}
 	
+	/** Get method for returning the name of a course
+	  *
+	  * @return studentCourse, the prefix of the course
+	  */
 	public function getCourseName() {
 		return $this->studentCourse;
 	}
 	
+	/** Get method for returning the level of a course
+	  *
+	  * @return courseLevel, the level of the course
+	  */
 	public function getCourseLevel() {
 		return $this->courseLevel;
 	}

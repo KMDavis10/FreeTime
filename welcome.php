@@ -12,7 +12,7 @@
 // 				the professors array. These arrays are then passed to a single User object, which returns its calculations 
 // 				back to this page. These calculations are then added to other information indicated by the user, subtracted
 //				from a set amount, and displayed to the user. 
-// Last modified on: 4/21/15
+// Last modified on: 4/27/15
 
 
 function __autoload($class_name) {
@@ -36,20 +36,26 @@ $count4 = 0;
 /** Retrieves user-entered information from Test2 and populates professors array */
 foreach($_POST as $k => $v) {
 	/** For each name that the user entered in Test2, we check to see if that professor exists in our Professor objects
-	  * if it does, then we get that Professor object and add it to the professor array 
-	  */
+	  * if it does not exist ($v was not set/was blank), then we say that the professor was unknown */
 	if (strpos($k, 'professor') === 0 && empty($v)) {
 		$professors[$count1] = $reader->getProfessor("unknown");
 		$professorsExist[$count1] = false;
 		$count1++;
 	}
 	else {
+		/** Otherwise, we use $v and check if that professor is in our database */
 		if(strpos($k, 'professor') === 0) {
+			/** Add the professor object gotten from the professor name we gave the getProfessor method (if the name did
+			  * not exist in the database, then it returns an "unknown" professor object, with 0 difficulty)*/
 			$professors[$count1] = $reader->getProfessor($v);
+			/** If that professor exists, then we update the professorsExist array (used for displaying to the user 
+			  * if the professor they entered was in the database or not)*/
 			if ($reader->getProfessorFound() == true) {
 				$professorsExist[$count1] = true;
 				$count1++;
 			}
+			/** If the professor was not found in the database, then we declare that position of the professorsExist array
+			  * to be false, and this information will be displayed to the user later */
 			else {
 				$professorsExist[$count1] = false;
 				$count1++;
@@ -100,6 +106,7 @@ foreach($_POST as $k => $v) {
 /** Creates each course with information from arrays */
 for ($i = 0; $i < $count1; $i++) {
 	$courses[$i] = new Course($courseNames[$i], $courseLevels[$i], $majorRequirements[$i], $professors[$i]);
+	/** Displays an error to the user if there is an unknown course (either the course prefix is not in the database or it is blank)*/
 	if ($professorsExist[$i] !=  null && $professors[$i] == true) {
 		if (strpos($courseNames[$i], "UNK") !== false) {
 			echo '<div align="center">';
@@ -112,12 +119,14 @@ for ($i = 0; $i < $count1; $i++) {
 		echo '</div>';
 	}
 	else {
+		/** Displays an error to the user if there is an unknown course (either the course prefix is not in the database or it is blank)*/
 		if (strpos($courses[$i]->getCourseName(), "UNK") !== false) {
 			echo '<div align="center">';
 			echo '<font color="red">Error! </font>';
 			echo " Course does not exist in database - calculated " . $courses[$i]->getCourseName() . " as an unknown class with no additional calculations";
 			echo '</div>';	
 		}
+		/** Displays an error to the user if there is an unknown professor (left blank or does not exist)*/
 		echo '<div align="center">';
 		echo '<font color="red">Error! </font>';
 		echo " Professor did not exist in database - calculated " . $courses[$i]->getCourseName() . $courses[$i]->getCourseLevel() . " without professor information";
@@ -148,12 +157,8 @@ if (!empty($clubs)) {
 /** Converts difficulty to hours */
 $difficultyToHours = $totalCourseDifficulty/5;
 $difficultyToHours += $other;
-/** Displays time needed per week */
-//echo nl2br("<br />" . "Total hours a week needed: " . $difficultyToHours);
 /** 100 comes from 168 (total hours in a week) - 56 (hours spent sleeping a week 8*7) - 12 (hours spent in class a week) */
 $freeTime = 100 - $difficultyToHours;
-/** Displays free time that student has a week, or average free time per day */
-//echo nl2br("<br />" . "Total free hours a week: " . $freeTime . ", or approximately " . $freeTime/7 . " hours a day");
 
 ?>
 
@@ -162,9 +167,11 @@ $freeTime = 100 - $difficultyToHours;
 <link rel="stylesheet" href="style2.css">
 <div id = "freeTime">
 <br>
+<!-- Displays the total free hours a week to 0 decimal places -->
 Total Free Hours a Week: <?php echo round($freeTime, 0)?>
 </div>
 <div id = "freeTime2">
+<!-- Displays the average free time a day, to 2 decimal places -->
 <?php echo "(or approximately " . round($freeTime/7, 2) . " hours a day)" ?>
 </div>
 
