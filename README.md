@@ -34,3 +34,7 @@ Entering a professor into the database:
   - A message will show up indicating that the professor was successfully added to the database, and from there, the user
     can go back to the homepage.
     
+
+FUTURE PLANS:
+ - Web scraper to get the professor names & their difficulty levels, rather than reading from a text file
+ - Put up on server so it does not need to be used in a local host environment
